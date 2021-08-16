@@ -1,7 +1,7 @@
 class Customer
   attr_reader :name
 
-  def initialize
+  def initialize(name)
     @name = name
     @rentals = []
   end

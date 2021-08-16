@@ -2,7 +2,7 @@
 リファクタリング：Rubyエディション（第１章）のサンプル
 
 # コードの状態
-初期状態
+statementメソッドの分解、再配置
 
 # 環境構築
 `docker-compose build --force-rm --no-cache`

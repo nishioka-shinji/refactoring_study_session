@@ -71,4 +71,69 @@ RSpec.describe Customer do
       end
     end
   end
+
+  describe '#html_statement' do
+    let!(:customer) { Customer.new('Bob') }
+
+    context 'レギュラーを2日借りる時' do
+      it 'returns valid value' do
+        movie  = Movie.new('映画名', Movie::REGULAR)
+        rental = Rental.new(movie, 2)
+
+        customer.add_rental(rental)
+        print customer.html_statement
+        expect(customer.html_statement).to eq("<h1>Rental Record for <em>Bob</em></h1><p>\n\t映画名: 2<br>\n<p>You owe <em>2</em><p>\nOn this rental you earnted <em>1</em> frequent renter points<p>")
+      end
+    end
+
+    context 'レギュラーを3日借りる時' do
+      it 'returns valid value' do
+        movie  = Movie.new('映画名', Movie::REGULAR)
+        rental = Rental.new(movie, 3)
+
+        customer.add_rental(rental)
+        expect(customer.html_statement).to eq("<h1>Rental Record for <em>Bob</em></h1><p>\n\t映画名: 3.5<br>\n<p>You owe <em>3.5</em><p>\nOn this rental you earnted <em>1</em> frequent renter points<p>")
+      end
+    end
+
+    context '新作を1日借りる時' do
+      it 'returns valid value' do
+        movie  = Movie.new('映画名', Movie::NEW_RELEASE)
+        rental = Rental.new(movie, 1)
+
+        customer.add_rental(rental)
+        expect(customer.html_statement).to eq("<h1>Rental Record for <em>Bob</em></h1><p>\n\t映画名: 3<br>\n<p>You owe <em>3</em><p>\nOn this rental you earnted <em>1</em> frequent renter points<p>")
+      end
+    end
+
+    context '新作を2日借りる時' do
+      it 'returns valid value' do
+        movie  = Movie.new('映画名', Movie::NEW_RELEASE)
+        rental = Rental.new(movie, 2)
+
+        customer.add_rental(rental)
+        expect(customer.html_statement).to eq("<h1>Rental Record for <em>Bob</em></h1><p>\n\t映画名: 6<br>\n<p>You owe <em>6</em><p>\nOn this rental you earnted <em>2</em> frequent renter points<p>")
+      end
+    end
+
+    context '子供向けを3日借りる時' do
+      it 'returns valid value' do
+        movie  = Movie.new('映画名', Movie::CHILDRENS)
+        rental = Rental.new(movie, 3)
+
+        customer.add_rental(rental)
+        expect(customer.html_statement).to eq("<h1>Rental Record for <em>Bob</em></h1><p>\n\t映画名: 1.5<br>\n<p>You owe <em>1.5</em><p>\nOn this rental you earnted <em>1</em> frequent renter points<p>")
+      end
+    end
+
+    context '子供向けを4日借りる時' do
+      it 'returns valid value' do
+        movie  = Movie.new('映画名', Movie::CHILDRENS)
+        rental = Rental.new(movie, 4)
+
+        customer.add_rental(rental)
+        expect(customer.html_statement).to eq("<h1>Rental Record for <em>Bob</em></h1><p>\n\t映画名: 3.0<br>\n<p>You owe <em>3.0</em><p>\nOn this rental you earnted <em>1</em> frequent renter points<p>")
+      end
+    end
+  end
 end

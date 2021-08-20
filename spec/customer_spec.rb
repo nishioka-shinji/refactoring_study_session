@@ -13,7 +13,7 @@ RSpec.describe Customer do
 
     context 'レギュラーを2日借りる時' do
       it 'returns valid value' do
-        movie  = Movie.new('映画名', Movie::REGULAR)
+        movie  = Movie.new('映画名', RegularPrice.new)
         rental = Rental.new(movie, 2)
 
         customer.add_rental(rental)
@@ -23,7 +23,7 @@ RSpec.describe Customer do
 
     context 'レギュラーを3日借りる時' do
       it 'returns valid value' do
-        movie  = Movie.new('映画名', Movie::REGULAR)
+        movie  = Movie.new('映画名', RegularPrice.new)
         rental = Rental.new(movie, 3)
 
         customer.add_rental(rental)
@@ -33,7 +33,7 @@ RSpec.describe Customer do
 
     context '新作を1日借りる時' do
       it 'returns valid value' do
-        movie  = Movie.new('映画名', Movie::NEW_RELEASE)
+        movie  = Movie.new('映画名', NewReleasePrice.new)
         rental = Rental.new(movie, 1)
 
         customer.add_rental(rental)
@@ -43,7 +43,7 @@ RSpec.describe Customer do
 
     context '新作を2日借りる時' do
       it 'returns valid value' do
-        movie  = Movie.new('映画名', Movie::NEW_RELEASE)
+        movie  = Movie.new('映画名', NewReleasePrice.new)
         rental = Rental.new(movie, 2)
 
         customer.add_rental(rental)
@@ -53,7 +53,7 @@ RSpec.describe Customer do
 
     context '子供向けを3日借りる時' do
       it 'returns valid value' do
-        movie  = Movie.new('映画名', Movie::CHILDRENS)
+        movie  = Movie.new('映画名', ChildrensPrice.new)
         rental = Rental.new(movie, 3)
 
         customer.add_rental(rental)
@@ -63,7 +63,7 @@ RSpec.describe Customer do
 
     context '子供向けを4日借りる時' do
       it 'returns valid value' do
-        movie  = Movie.new('映画名', Movie::CHILDRENS)
+        movie  = Movie.new('映画名', ChildrensPrice.new)
         rental = Rental.new(movie, 4)
 
         customer.add_rental(rental)
@@ -77,7 +77,7 @@ RSpec.describe Customer do
 
     context 'レギュラーを2日借りる時' do
       it 'returns valid value' do
-        movie  = Movie.new('映画名', Movie::REGULAR)
+        movie  = Movie.new('映画名', RegularPrice.new)
         rental = Rental.new(movie, 2)
 
         customer.add_rental(rental)
@@ -88,7 +88,7 @@ RSpec.describe Customer do
 
     context 'レギュラーを3日借りる時' do
       it 'returns valid value' do
-        movie  = Movie.new('映画名', Movie::REGULAR)
+        movie  = Movie.new('映画名', RegularPrice.new)
         rental = Rental.new(movie, 3)
 
         customer.add_rental(rental)
@@ -98,7 +98,7 @@ RSpec.describe Customer do
 
     context '新作を1日借りる時' do
       it 'returns valid value' do
-        movie  = Movie.new('映画名', Movie::NEW_RELEASE)
+        movie  = Movie.new('映画名', NewReleasePrice.new)
         rental = Rental.new(movie, 1)
 
         customer.add_rental(rental)
@@ -108,7 +108,7 @@ RSpec.describe Customer do
 
     context '新作を2日借りる時' do
       it 'returns valid value' do
-        movie  = Movie.new('映画名', Movie::NEW_RELEASE)
+        movie  = Movie.new('映画名', NewReleasePrice.new)
         rental = Rental.new(movie, 2)
 
         customer.add_rental(rental)
@@ -118,7 +118,7 @@ RSpec.describe Customer do
 
     context '子供向けを3日借りる時' do
       it 'returns valid value' do
-        movie  = Movie.new('映画名', Movie::CHILDRENS)
+        movie  = Movie.new('映画名', ChildrensPrice.new)
         rental = Rental.new(movie, 3)
 
         customer.add_rental(rental)
@@ -128,7 +128,7 @@ RSpec.describe Customer do
 
     context '子供向けを4日借りる時' do
       it 'returns valid value' do
-        movie  = Movie.new('映画名', Movie::CHILDRENS)
+        movie  = Movie.new('映画名', ChildrensPrice.new)
         rental = Rental.new(movie, 4)
 
         customer.add_rental(rental)

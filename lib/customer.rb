@@ -14,18 +14,20 @@ class Customer
     total_amount, frequent_renter_points = 0, 0
     result = "Rental Record for #{@name}\n"
     @rentals.each do |element|
-      frequent_renter_points += element.frequent_renter_points
-
       # このレンタルの料金を表示
       result += "\t" + element.movie.title + "\t" + element.charge.to_s + "\n"
     end
     # フッタ行を追加
     result += "Amount owed is #{total_charge}\n"
-    result += "You earnted #{frequent_renter_points} frequent renter points"
+    result += "You earnted #{total_frequent_renter_points} frequent renter points"
     result
   end
 
   def total_charge
     @rentals.each.inject(0) { |sum, rental| sum + rental.charge }
+  end
+
+  def total_frequent_renter_points
+    @rentals.inject(0) { |sum, rental| sum + rental.frequent_renter_points }
   end
 end
